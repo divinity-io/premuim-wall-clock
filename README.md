@@ -10,13 +10,7 @@
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 </p>
 
-<p>
-  <img src="https://img.shields.io/github/stars/divinity-io/premium-wall-clock?style=flat-square">
-  <img src="https://img.shields.io/github/forks/divinity-io/premium-wall-clock?style=flat-square">
-  <img src="https://img.shields.io/github/license/divinity-io/premium-wall-clock?style=flat-square">
-</p>
 
-</div>
 
 ---
 
