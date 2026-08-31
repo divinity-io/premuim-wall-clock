@@ -65,3 +65,13 @@ premium-wall-clock/
 ├── wall-clock.js
 └── README.md
 
+
+## ✨ Features
+
+- 🕐 Analog wall clock
+- ⏱️ Live digital time
+- 📅 Current date display
+- ⚡ Real-time clock hands
+- 📱 Responsive design
+- 🎨 Modern interface
+
