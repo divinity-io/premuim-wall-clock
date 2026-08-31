@@ -1,0 +1,453 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --red: #e50914;
+    --white: #f5f5f5;
+    --muted: #777;
+    --face: #090909;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #202020 0%,
+            #0b0b0b 45%,
+            #000 100%
+        );
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--white);
+    overflow: hidden;
+}
+
+
+/* =========================================
+   CLOCK OUTER BODY
+========================================= */
+
+.clock-frame {
+    width: min(88vw, 480px);
+    aspect-ratio: 1;
+
+    padding: 15px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3a3a3a,
+            #111,
+            #030303
+        );
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.85),
+        0 0 0 2px #444,
+        inset 4px 4px 10px rgba(255,255,255,.08),
+        inset -8px -8px 18px rgba(0,0,0,.9);
+}
+
+
+/* =========================================
+   CLOCK FACE
+========================================= */
+
+.clock {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 45% 40%,
+            #181818 0%,
+            #0b0b0b 55%,
+            #020202 100%
+        );
+
+    border: 2px solid #292929;
+
+    box-shadow:
+        inset 0 0 50px rgba(0,0,0,.95),
+        inset 0 0 10px rgba(255,255,255,.04);
+}
+
+
+/* Subtle glass reflection */
+
+.clock::before {
+    content: "";
+
+    position: absolute;
+    inset: 2%;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.055),
+            transparent 30%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
+    position: absolute;
+
+    top: 21%;
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: clamp(13px, 3.5vw, 20px);
+    font-weight: 700;
+
+    letter-spacing: 6px;
+
+    color: #eee;
+}
+
+
+/* Small brand line */
+
+.brand-line {
+    position: absolute;
+
+    top: 27%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 35px;
+    height: 2px;
+
+    background: var(--red);
+
+    border-radius: 20px;
+
+    box-shadow: 0 0 8px rgba(229,9,20,.45);
+}
+
+
+/* =========================================
+   NUMBERS
+========================================= */
+
+.numbers {
+    position: absolute;
+    inset: 0;
+}
+
+.number {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 100%;
+    height: 100%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--angle));
+
+    pointer-events: none;
+}
+
+.number span {
+    position: absolute;
+
+    top: 7%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(calc(var(--angle) * -1));
+
+    font-size: clamp(16px, 4.5vw, 25px);
+
+    font-weight: 500;
+
+    color: #ddd;
+
+    text-shadow:
+        0 2px 4px #000;
+}
+
+
+/* =========================================
+   CLOCK TICKS
+========================================= */
+
+.ticks {
+    position: absolute;
+    inset: 0;
+}
+
+.tick {
+    position: absolute;
+
+    left: 50%;
+    top: 4%;
+
+    width: 2px;
+    height: 7px;
+
+    background: #666;
+
+    transform-origin:
+        50%
+        calc(46% / 0.46);
+}
+
+
+/*
+   The JavaScript gives every tick
+   its own rotation.
+*/
+
+.tick.major {
+    width: 3px;
+    height: 13px;
+
+    background: #aaa;
+}
+
+
+/* =========================================
+   CLOCK HANDS
+========================================= */
+
+.hand {
+    position: absolute;
+
+    left: 50%;
+    bottom: 50%;
+
+    transform-origin: 50% 100%;
+
+    border-radius: 20px;
+
+    transform:
+        translateX(-50%)
+        rotate(0deg);
+}
+
+
+/* Hour */
+
+.hour-hand {
+    width: 8px;
+    height: 24%;
+
+    background:
+        linear-gradient(
+            to right,
+            #777,
+            #fff,
+            #777
+        );
+
+    z-index: 5;
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.7);
+}
+
+
+/* Minute */
+
+.minute-hand {
+    width: 5px;
+    height: 34%;
+
+    background:
+        linear-gradient(
+            to right,
+            #777,
+            #f5f5f5,
+            #777
+        );
+
+    z-index: 6;
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.7);
+}
+
+
+/* Second */
+
+.second-hand {
+    width: 2px;
+    height: 39%;
+
+    background: var(--red);
+
+    z-index: 7;
+
+    box-shadow:
+        0 0 7px rgba(229,9,20,.65);
+}
+
+
+/* =========================================
+   CENTER PIN
+========================================= */
+
+.center-pin {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #aaa 35%,
+            #333 70%,
+            #111 100%
+        );
+
+    border: 2px solid #111;
+
+    z-index: 20;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.15);
+}
+
+
+/* =========================================
+   DIGITAL DISPLAY
+========================================= */
+
+.digital {
+    position: absolute;
+
+    left: 0;
+    bottom: 18%;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+.digital-time {
+    font-family: monospace;
+
+    font-size: clamp(12px, 3.5vw, 18px);
+
+    letter-spacing: 3px;
+
+    color: #aaa;
+}
+
+.date {
+    margin-top: 6px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #555;
+}
+
+
+/* =========================================
+   DECORATIVE RED DOT
+========================================= */
+
+.status-dot {
+    position: absolute;
+
+    left: 50%;
+    bottom: 29%;
+
+    transform: translateX(-50%);
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    box-shadow:
+        0 0 8px rgba(229,9,20,.7);
+}
+
+
+/* =========================================
+   RED SECOND-HAND COUNTERWEIGHT
+========================================= */
+
+.second-tail {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 2px;
+    height: 7%;
+
+    background: var(--red);
+
+    transform-origin: top center;
+
+    z-index: 4;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+    .clock-frame {
+        width: 88vw;
+        padding: 11px;
+    }
+
+    .brand {
+        letter-spacing: 4px;
+    }
+
+    .brand-line {
+        width: 28px;
+    }
+
+}
