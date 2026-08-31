@@ -75,3 +75,7 @@ premium-wall-clock/
 - 📱 Responsive design
 - 🎨 Modern interface
 
+
+## Quick Start
+
+Run the wall clock and enjoy the display.
