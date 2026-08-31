@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🕐 P R E M I U M  W A L L  C L O C K
+# 🕐  W A L L  C L O C K
 
 ### 🕐 Real-Time Clock • 🎨 Premium UI • 💻 Frontend Project
 
